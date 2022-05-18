@@ -1,15 +1,13 @@
 package com.cydeo.test.ExtraPractices;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-public class TestCase2 {
+public class LoginFunctionalities {
 
-    public static void loginInvalidPassword(WebDriver driver, String invalidPassword, String validUsername){
+    public static void loginCredentialsInput(WebDriver driver, String invalidPassword, String validUsername){
 
         WebElement login= driver.findElement(By.name("USER_LOGIN"));
         login.sendKeys(validUsername);
@@ -30,7 +28,16 @@ public class TestCase2 {
         }else{
             System.out.println("Test Case FAILED");
         }
+    }
+    public static void checkTitle(WebDriver driver, String expectedTitle){
+        String title=driver.getTitle();
 
+
+        if(title.contains(expectedTitle)){
+            System.out.println("TC001 VALID LOGIN CASE SUCCESSFUL");
+        }else{
+            System.out.println("TC001 VALID LOGIN CASE FAILED");
+        }
     }
 }
 

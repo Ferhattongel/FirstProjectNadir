@@ -20,24 +20,32 @@ public class Main {
         String validPassword = "UserUser";
         String invalidPassword = "invalidPassword";
         String expected="Incorrect login or password";
+        String expectedTitle="Portal";
          /*
     Test Case 1:
+        Given I am on NextBaseCRM Login page
+        When I enter valid help desk username
+        And I enter valid help desk password
+        And I click log in button
+        Then I should see help desk account logged in
 
     */
-
-
-
+        LoginFunctionalities.loginCredentialsInput(driver, validPassword,validUsername);
+        LoginFunctionalities.checkTitle(driver,expectedTitle);
     /*
-
     test Case 2
-
-
-
+        Given I am on NextBaseCRM Login page
+        When I enter valid help desk username
+        And I enter invalid help desk password
+        And I click log in button
+        Then I should see error message
      */
+        WebDriver driver2 = new ChromeDriver();
+        driver2.get("https://login.nextbasecrm.com/");
 
-        TestCase2.loginInvalidPassword(driver, invalidPassword,validUsername);
+        LoginFunctionalities.loginCredentialsInput(driver2, invalidPassword,validUsername);
 
-        TestCase2.checkErrorMSG(driver, expected);
+        LoginFunctionalities.checkErrorMSG(driver2, expected);
 
 
 
