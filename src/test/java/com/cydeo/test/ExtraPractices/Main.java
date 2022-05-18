@@ -44,10 +44,21 @@ public class Main {
         driver2.get("https://login.nextbasecrm.com/");
 
         LoginFunctionalities.loginCredentialsInput(driver2, invalidPassword,validUsername);
-
         LoginFunctionalities.checkErrorMSG(driver2, expected);
 
+        /*
+        Given I am on NextBaseCRM Login page
+        When I enter invalid help desk username
+        And I enter invalid help desk password
+        And I click log in button
+        Then I should see error message
+         */
 
+        WebDriver driver3 = new ChromeDriver();
+        driver2.get("https://login.nextbasecrm.com/");
+
+        LoginFunctionalities.loginCredentialsInput(driver3, invalidPassword,invalidUsername);
+        LoginFunctionalities.checkErrorMSG(driver3, expected);
 
     }
 
